@@ -1,38 +1,161 @@
-.App {
-  text-align: center;
+:root {
+    --dark-gray: #262626;
+    --medium-gray: #5d5d5d;
+    --light-gray: #bfbfbf;
+    --white: #f2f2f2;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    background-color: var(--dark-gray);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-title {
+    font-family: 'Bubblegum Sans', cursive;
+    color: var(--white);
+    text-align: center;
+    margin-top: 1em;
+    font-size: 4.5em;
 }
 
-.App-link {
-  color: #61dafb;
+.drum-machine {
+    width: 47em;
+    height: 23em;
+    border-radius: 15px;
+    background-color: var(--light-gray);
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 2em 2em 2em 3em;
+    flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drum-pads {
+    width: 50%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    gap: 0.5em;
+    margin-right: 2.5em;
+}
+
+.drum-pad {
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    background-color: var(--white);
+    border: none;
+    font-size: 1.8em;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.control-panel {
+    width: 40%;
+    height: 100%;
+    padding: 0 1em 0 1em;
+}
+
+.switches {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.switches h2 {
+    margin: 0;
+    color: var(--white);
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.7em;
+    margin-bottom: 0.3em;
+}
+
+.switch-container {
+    text-align: center;
+}
+
+.switch {
+    position: relative;
+    cursor: pointer;
+    background-color: var(--dark-gray);
+    width: 5.5em;
+    height: 3em;
+    border-radius: 25px;
+    transition: background-color 0.5s;
+    margin: auto;
+}
+
+#switch2 {
+    background-color: rgb(242, 242, 242);
+}
+
+.toggle {
+    position: absolute;
+    background-color: var(--white);
+    top: 0.21em;
+    left: 0.2em;
+    width: 2.4em;
+    height: 85%;
+    border-radius: 25px;
+    transition: left 0.5s, background-color 0.1s;
+}
+
+#toggle2 {
+    left: 2.9em;
+    background-color: #262626;
+}
+
+.volume-container {
+    background-color: var(--dark-gray);
+    height: 3em;
+    padding: 0 0.5em;
+    margin-top: 2em;
+    border-radius: 5px;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    border: none;
+    position: relative;
+    top: 25%;
+    height: 13%;
+    width: 100%;
+    background: var(--white);
+    background-image: linear-gradient(var(--medium-gray), var(--medium-gray));
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 100%;
+    background: var(--medium-gray);
+}
+
+.display {
+    height: 7em;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1.2em 0;
+    margin-top: 1em;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-family: 'Rubik', sans-serif;
 }
