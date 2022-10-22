@@ -27,6 +27,7 @@ function Switch({ switchId, toggleId, label }) {
                     buttons.forEach((button) => {
                         button.disabled = true;
                     });
+                    dispatch(setDisplay(''));
                 } else {
                     console.log('INSIDE ELSE');
                     buttons.forEach((button) => {
