@@ -71,44 +71,69 @@ function Pad({ letter }) {
         switch (event.key) {
             case 'Q':
             case 'q':
+                document.getElementById(`pad-Q`).className += ' active';
                 document.getElementById(`pad-Q`).click();
+                keyStyleReset('Q');
                 break;
             case 'W':
             case 'w':
+                document.getElementById(`pad-W`).className += ' active';
                 document.getElementById(`pad-W`).click();
+                keyStyleReset('W');
                 break;
             case 'E':
             case 'e':
+                document.getElementById(`pad-E`).className += ' active';
                 document.getElementById(`pad-E`).click();
+                keyStyleReset('E');
                 break;
             case 'A':
             case 'a':
+                document.getElementById(`pad-A`).className += ' active';
                 document.getElementById(`pad-A`).click();
+                keyStyleReset('A');
                 break;
             case 'S':
             case 's':
+                document.getElementById(`pad-S`).className += ' active';
                 document.getElementById(`pad-S`).click();
+                keyStyleReset('S');
                 break;
             case 'D':
             case 'd':
+                document.getElementById(`pad-D`).className += ' active';
                 document.getElementById(`pad-D`).click();
+                keyStyleReset('D');
                 break;
             case 'Z':
             case 'z':
+                document.getElementById(`pad-Z`).className += ' active';
                 document.getElementById(`pad-Z`).click();
+                keyStyleReset('Z');
                 break;
             case 'X':
             case 'x':
+                document.getElementById(`pad-X`).className += ' active';
                 document.getElementById(`pad-X`).click();
+                keyStyleReset('X');
                 break;
             case 'C':
             case 'c':
+                document.getElementById(`pad-C`).className += ' active';
                 document.getElementById(`pad-C`).click();
+                keyStyleReset('C');
                 break;
             default:
                 console.log('KEY PRESS NOT RECOGNISED');
         }
     };
+
+    const keyStyleReset = (letter) => {
+        setTimeout(() => {
+            document.getElementById(`pad-${letter}`).className = 'drum-pad';
+        }, 100);
+    };
+
     document.body.onkeydown = (event) => {
         handleKey(event);
     };
@@ -117,7 +142,9 @@ function Pad({ letter }) {
         <button
             className='drum-pad'
             id={`pad-${letter}`}
-            onClick={() => playAudio(letter)}
+            onClick={() => {
+                playAudio(letter);
+            }}
         >
             {letter}
         </button>

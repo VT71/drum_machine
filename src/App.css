@@ -73,6 +73,11 @@ body {
     color: var(--white);
 }
 
+.drum-pad.active {
+    background-color: var(--dark-gray);
+    color: var(--white);
+}
+
 .control-panel {
     width: 40%;
     height: 100%;
