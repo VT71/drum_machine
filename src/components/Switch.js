@@ -25,6 +25,7 @@ function Switch({ switchId, toggleId, label }) {
                 console.log('INSIDE SWITCH2');
                 let buttons = document.querySelectorAll('button.drum-pad');
                 if (power) {
+                    document.getElementById('volume-slider').disabled = true;
                     console.log('INSIDE IF');
                     buttons.forEach((button) => {
                         button.disabled = true;
