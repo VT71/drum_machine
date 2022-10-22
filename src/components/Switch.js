@@ -12,12 +12,14 @@ function Switch({ switchId, toggleId, label }) {
     const switchUpdate = (switchId) => {
         switch (switchId) {
             case 'switch1':
-                if (bank) {
-                    dispatch(setDisplay('Heater Kit'));
-                } else {
-                    dispatch(setDisplay('Smooth Piano Kit'));
+                if (power) {
+                    if (bank) {
+                        dispatch(setDisplay('Heater Kit'));
+                    } else {
+                        dispatch(setDisplay('Smooth Piano Kit'));
+                    }
+                    dispatch(setBank(!bank));
                 }
-                dispatch(setBank(!bank));
                 break;
             case 'switch2':
                 console.log('INSIDE SWITCH2');
@@ -91,7 +93,9 @@ function Switch({ switchId, toggleId, label }) {
                 className='switch'
                 id={switchId}
                 onClick={() => {
-                    switchAnimation(switchId, toggleId);
+                    if (power) {
+                        switchAnimation(switchId, toggleId);
+                    }
                 }}
             >
                 <div id={toggleId} className='toggle'></div>
