@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPower, setBank } from '../store/slices/drumSlice';
+import { setPower, setBank, setDisplay } from '../store/slices/drumSlice';
 
 function Switch({ switchId, toggleId, label }) {
     const dispatch = useDispatch();
@@ -12,13 +12,18 @@ function Switch({ switchId, toggleId, label }) {
     const switchUpdate = (switchId) => {
         switch (switchId) {
             case 'switch1':
+                if (bank) {
+                    dispatch(setDisplay('Heater Kit'));
+                } else {
+                    dispatch(setDisplay('Smooth Piano Kit'));
+                }
                 dispatch(setBank(!bank));
                 break;
             case 'switch2':
                 dispatch(setPower(!power));
                 break;
             default:
-                dispatch(setPower(power));
+                dispatch(setPower(false));
         }
     };
 
