@@ -5,7 +5,7 @@ import { setDisplay } from '../store/slices/drumSlice';
 
 function Pad({ letter }) {
     const dispatch = useDispatch();
-
+    const power = useSelector((state) => state.drum.power);
     const bank = useSelector((state) => state.drum.bank);
     const bankOff = new Map([
         ['Q', 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'],
@@ -147,7 +147,9 @@ function Pad({ letter }) {
             className='drum-pad'
             id={`pad-${letter}`}
             onClick={() => {
-                playAudio(letter);
+                if (power) {
+                    playAudio(letter);
+                }
             }}
         >
             {letter}

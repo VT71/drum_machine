@@ -20,6 +20,19 @@ function Switch({ switchId, toggleId, label }) {
                 dispatch(setBank(!bank));
                 break;
             case 'switch2':
+                console.log('INSIDE SWITCH2');
+                let buttons = document.querySelectorAll('button.drum-pad');
+                if (power) {
+                    console.log('INSIDE IF');
+                    buttons.forEach((button) => {
+                        button.disabled = true;
+                    });
+                } else {
+                    console.log('INSIDE ELSE');
+                    buttons.forEach((button) => {
+                        button.disabled = false;
+                    });
+                }
                 dispatch(setPower(!power));
                 break;
             default:
