@@ -61,6 +61,16 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 15px;
+    cursor: pointer;
+}
+
+.drum-pad:hover {
+    background-color: #e2e2e2;
+}
+
+.drum-pad:active {
+    background-color: var(--dark-gray);
+    color: var(--white);
 }
 
 .control-panel {

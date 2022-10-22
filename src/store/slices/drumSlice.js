@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { bank: false, power: true, volume: 50, toDisplay: '' };
+const initialState = { bank: false, power: true, volume: 0.5, toDisplay: '' };
 
 const drumSlice = createSlice({
     name: 'drum',
@@ -20,3 +20,7 @@ const drumSlice = createSlice({
         },
     },
 });
+
+export const { setPower, setBank, setVolume, setDisplay } = drumSlice.actions;
+
+export default drumSlice.reducer;

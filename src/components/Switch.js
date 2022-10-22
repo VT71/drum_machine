@@ -1,10 +1,32 @@
 import React from 'react';
 import '../App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPower, setBank } from '../store/slices/drumSlice';
 
 function Switch({ switchId, toggleId, label }) {
+    const dispatch = useDispatch();
+
+    const bank = useSelector((state) => state.drum.bank);
+    const power = useSelector((state) => state.drum.power);
+
+    const switchUpdate = (switchId) => {
+        switch (switchId) {
+            case 'switch1':
+                dispatch(setBank(!bank));
+                break;
+            case 'switch2':
+                dispatch(setPower(!power));
+                break;
+            default:
+                dispatch(setPower(power));
+        }
+    };
+
     const switchAnimation = (switchId, toggleId) => {
         const switchElement = document.getElementById(switchId);
         const toggleElement = document.getElementById(toggleId);
+
+        switchUpdate(switchId);
 
         switch (switchElement.style.backgroundColor) {
             case 'rgb(242, 242, 242)':

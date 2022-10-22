@@ -1,9 +1,18 @@
 import React from 'react';
 import '../App.css';
+import { useDispatch } from 'react-redux';
+import { setVolume } from '../store/slices/drumSlice';
 
 function Volume() {
-    const volumeAnimation = (sliderId) => {
-        document.getElementById(sliderId).style.backgroundSize = `${
+    const dispatch = useDispatch();
+
+    const volumeUpdate = () => {
+        dispatch(
+            setVolume(
+                parseInt(document.getElementById('volume-slider').value) / 100
+            )
+        );
+        document.getElementById('volume-slider').style.backgroundSize = `${
             document.getElementById('volume-slider').value
         }% 100%`;
     };
@@ -17,7 +26,7 @@ function Volume() {
                 min='0'
                 max='100'
                 onChange={() => {
-                    volumeAnimation('volume-slider');
+                    volumeUpdate();
                 }}
             />
         </div>
