@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { useDispatch } from 'react-redux';
-import { setVolume } from '../store/slices/drumSlice';
+import { setVolume, setDisplay } from '../store/slices/drumSlice';
 
 function Volume() {
     const dispatch = useDispatch();
@@ -12,6 +12,15 @@ function Volume() {
                 parseInt(document.getElementById('volume-slider').value) / 100
             )
         );
+        dispatch(
+            setDisplay(
+                'Volume: ' +
+                    parseInt(document.getElementById('volume-slider').value)
+            )
+        );
+        setTimeout(() => {
+            dispatch(setDisplay(''));
+        }, 1000);
         document.getElementById('volume-slider').style.backgroundSize = `${
             document.getElementById('volume-slider').value
         }% 100%`;
