@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDisplay } from '../store/slices/drumSlice';
 
 function Pad({ letter }) {
+    const dispatch = useDispatch();
+
     const bank = useSelector((state) => state.drum.bank);
     const bankOff = new Map([
         ['Q', 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'],
@@ -58,8 +60,10 @@ function Pad({ letter }) {
     const playAudio = (letter) => {
         let path = '';
         if (!bank) {
+            dispatch(setDisplay(bankOffNames.get(letter)));
             path = bankOff.get(letter);
         } else {
+            dispatch(setDisplay(bankOnNames.get(letter)));
             path = bankOn.get(letter);
         }
 
