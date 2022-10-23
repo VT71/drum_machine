@@ -22,19 +22,17 @@ function Switch({ switchId, toggleId, label }) {
                 }
                 break;
             case 'switch2':
-                console.log('INSIDE SWITCH2');
-                let buttons = document.querySelectorAll('button.drum-pad');
+                let pads = document.querySelectorAll('div.drum-pad');
                 if (power) {
                     document.getElementById('volume-slider').disabled = true;
-                    console.log('INSIDE IF');
-                    buttons.forEach((button) => {
-                        button.disabled = true;
+                    pads.forEach((pad) => {
+                        pad.className += ' disabled';
                     });
                     dispatch(setDisplay(''));
                 } else {
-                    console.log('INSIDE ELSE');
-                    buttons.forEach((button) => {
-                        button.disabled = false;
+                    document.getElementById('volume-slider').disabled = false;
+                    pads.forEach((pad) => {
+                        pad.className = 'drum-pad';
                     });
                 }
                 dispatch(setPower(!power));
@@ -94,7 +92,7 @@ function Switch({ switchId, toggleId, label }) {
                 className='switch'
                 id={switchId}
                 onClick={() => {
-                    if (power) {
+                    if (switchId === 'switch2' || power) {
                         switchAnimation(switchId, toggleId);
                     }
                 }}

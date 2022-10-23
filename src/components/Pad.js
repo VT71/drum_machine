@@ -5,6 +5,7 @@ import { setDisplay } from '../store/slices/drumSlice';
 
 function Pad({ letter }) {
     const dispatch = useDispatch();
+    const volume = useSelector((state) => state.drum.volume);
     const power = useSelector((state) => state.drum.power);
     const bank = useSelector((state) => state.drum.bank);
     const bankOff = new Map([
@@ -57,17 +58,24 @@ function Pad({ letter }) {
         ['C', 'Snare'],
     ]);
 
+    const getSource = () => {
+        let source = '';
+        if (!bank) {
+            source = bankOff.get(letter);
+        } else {
+            source = bankOn.get(letter);
+        }
+        return source;
+    };
+
     const playAudio = (letter) => {
-        let path = '';
+        const audio = document.getElementById(letter);
+        audio.volume = volume;
         if (!bank) {
             dispatch(setDisplay(bankOffNames.get(letter)));
-            path = bankOff.get(letter);
         } else {
             dispatch(setDisplay(bankOnNames.get(letter)));
-            path = bankOn.get(letter);
         }
-
-        const audio = new Audio(path);
         audio.play();
     };
 
@@ -139,11 +147,13 @@ function Pad({ letter }) {
     };
 
     document.body.onkeydown = (event) => {
-        handleKey(event);
+        if (power) {
+            handleKey(event);
+        }
     };
 
     return (
-        <button
+        <div
             className='drum-pad'
             id={`pad-${letter}`}
             onClick={() => {
@@ -152,8 +162,9 @@ function Pad({ letter }) {
                 }
             }}
         >
+            <audio className='clip' id={letter} src={getSource(letter)}></audio>
             {letter}
-        </button>
+        </div>
     );
 }
 

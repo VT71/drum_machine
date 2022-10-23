@@ -8,7 +8,7 @@ function App() {
     return (
         <div className='root'>
             <h1 className='main-title'>Drum Machine</h1>
-            <div className='drum-machine'>
+            <div className='drum-machine' id='drum-machine'>
                 <div className='drum-pads'>
                     <Pad letter='Q' />
                     <Pad letter='W' />
